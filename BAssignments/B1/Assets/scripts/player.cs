@@ -18,8 +18,6 @@ public class player : MonoBehaviour {
 	private NavMeshAgent agent;
 	private Vector3 curpos;
 	private Vector3 lastpos;
-	private int jump = 0;
-	private Vector3 Jump;
 
 	private bool isWalking;
 
@@ -28,8 +26,6 @@ public class player : MonoBehaviour {
 		isWalking = true;
 	}
 
-
-
 	// Use this for initialization
 	void Start () {
 		anim = GetComponent<Animator> ();
@@ -37,7 +33,6 @@ public class player : MonoBehaviour {
 		unitychan = GetComponent<Transform> ();
 		agent = GetComponent<NavMeshAgent> ();
 		run = false;
-		
 	}
 	
 	// Update is called once per frame
@@ -120,7 +115,7 @@ public class player : MonoBehaviour {
 		
 		if (isWalking) {
 			//anim.Play ("WALK00_F", -1, 0f);
-			//Debug.Log ("is walking");
+			Debug.Log ("is walking");
 			anim.SetBool ("isWalking", true);
 			if (Input.GetKey (KeyCode.LeftShift) && isWalking == true) {
 				anim.SetBool ("run",true);
@@ -137,15 +132,7 @@ public class player : MonoBehaviour {
 		}
 
 
-		if (agent.isOnOffMeshLink == true) {
-			Debug.Log("JUMP");
-		
-			anim.Play ("RunJump_ToLeft_2",-1,0f);
 
-
-
-		}
-	
 	
 
 

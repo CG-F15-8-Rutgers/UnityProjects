@@ -169,9 +169,7 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     animationImportErrors: 
-    animationImportWarnings: "\nDefault bone length found in this file is different
-      form the one found in the source avatar:\n\t'LeftLeg' : position error = 7.696520
-      mm\n\t'LeftFoot' : position error = 15.233778 mm\n"
+    animationImportWarnings: 
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     animationCompression: 1
@@ -184,8 +182,8 @@ ModelImporter:
     - serializedVersion: 16
       name: JogJump_ToLeft_2
       takeName: _16_a_U1_M_P_JogJump_ToLeft_R_Fb_p0_No_0_3
-      firstFrame: 270
-      lastFrame: 310
+      firstFrame: 244
+      lastFrame: 349
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
