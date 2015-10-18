@@ -10,17 +10,8 @@ public class SampleAgentScript : MonoBehaviour {
 	void Start () {
 		agent = GetComponent<NavMeshAgent> ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetMouseButtonDown (0)) {
-			RaycastHit hit;
-			Ray ray = camera.ScreenPointToRay(Input.mousePosition);
-			
-			if (Physics.Raycast(ray, out hit)) {
-				Debug.Log (hit.point);
-				agent.SetDestination(hit.point);
-			}
-		}
+
+	void goToDestination (Vector3 v) {
+		agent.SetDestination (v);
 	}
 }
