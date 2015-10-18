@@ -30,9 +30,8 @@ public class Director : MonoBehaviour {
 			Ray ray = camera.ScreenPointToRay (Input.mousePosition);
 			
 			if (Physics.Raycast (ray, out hit)) {
-				Debug.Log (hit.point);
 				foreach (NavMeshAgent a in agents) {
-					a.SetDestination(hit.point);
+					a.BroadcastMessage("testReceive", hit.point);
 				}
 			}
 		} else if (Input.GetMouseButtonDown (1)) {
@@ -50,6 +49,7 @@ public class Director : MonoBehaviour {
 					int index = agents.FindIndex(a => {
 						return agent == a;
 					});
+					Debug.Log (index);
 					if(index != -1) {
 						Debug.Log ("Unselecting agent");
 						agents.RemoveAt (index);

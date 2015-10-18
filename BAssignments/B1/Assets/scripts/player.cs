@@ -21,6 +21,10 @@ public class player : MonoBehaviour {
 
 	private bool isWalking;
 
+	void testReceive (Vector3 v) {
+		agent.SetDestination (v);
+		isWalking = true;
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -29,11 +33,6 @@ public class player : MonoBehaviour {
 		unitychan = GetComponent<Transform> ();
 		agent = GetComponent<NavMeshAgent> ();
 		run = false;
-
-		agent.SetDestination (new Vector3(0, 0, 0));
-		isWalking = true;
-
-
 	}
 	
 	// Update is called once per frame
