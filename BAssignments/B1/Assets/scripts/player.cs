@@ -20,10 +20,30 @@ public class player : MonoBehaviour {
 	private Vector3 lastpos;
 
 	private bool isWalking;
-
-	void testReceive (Vector3 v) {
+	private int counter =0;
+	private bool sprinting ;
+	void goToDestination (Vector3 v) {
 		agent.SetDestination (v);
 		isWalking = true;
+	}
+
+	void toggleSpeed() {
+		Debug.Log ("entered");
+		if (counter %2 == 0 ) {
+			Debug.Log ("sprint");
+			sprinting = true;
+			//anim.SetBool ("run", true);
+			Debug.Log (anim.GetBool ("run"));
+			//anim.Play ("Run",-1,0f);
+			++counter;
+		} 
+		else {
+			Debug.Log ("walk");
+			sprinting = false;
+			//anim.SetBool("run",false);
+			++counter;
+		}
+		//anim.SetBool ("run", !anim.GetBool ("run"));
 	}
 
 	// Use this for initialization
@@ -117,11 +137,14 @@ public class player : MonoBehaviour {
 			//anim.Play ("WALK00_F", -1, 0f);
 			Debug.Log ("is walking");
 			anim.SetBool ("isWalking", true);
-			if (Input.GetKey (KeyCode.LeftShift) && isWalking == true) {
+			if (sprinting == true && isWalking == true) {
 				anim.SetBool ("run",true);
+				agent.speed = 7f;
+				Debug.Log (agent.speed);
 			}
 			else{
 				anim.SetBool ("run",false);
+				agent.speed = 3.5f;
 			}
 			if (Input.GetKey (KeyCode.Space)) {
 				anim.SetBool ("jump", true);
@@ -131,6 +154,16 @@ public class player : MonoBehaviour {
 			}
 		}
 
+		
+		if (agent.isOnOffMeshLink == true) {
+			Debug.Log("JUMP");
+			
+			anim.Play ("JUMP00",-1,0f);
+			
+		}
+		
+		
+		
 
 
 	

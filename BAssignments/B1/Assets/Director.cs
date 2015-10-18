@@ -28,11 +28,30 @@ public class Director : MonoBehaviour {
 		if (Input.GetMouseButtonDown (0)) {
 			RaycastHit hit;
 			Ray ray = camera.ScreenPointToRay (Input.mousePosition);
-			
-			if (Physics.Raycast (ray, out hit)) {
-				foreach (NavMeshAgent a in agents) {
-					a.BroadcastMessage("testReceive", hit.point);
+
+			if(Physics.Raycast(ray, out hit)){
+				Transform objectHit = hit.transform;
+				NavMeshAgent agent = null;
+				NavMeshObstacle obstacle = null;
+				if(objectHit.GetComponent<NavMeshAgent>()) {
+					agent = objectHit.GetComponent<NavMeshAgent> ();
+					int index = agents.FindIndex(a => {
+						return agent == a;
+					});
+					Debug.Log (index);
+					if(index != -1) {
+						Debug.Log ("Unselecting agent");
+						agents[index].BroadcastMessage("toggleSpeed");
+					} 
+					else {
+						Debug.Log ("Selecting agent");
+					}
+				} else {
+					foreach (NavMeshAgent a in agents) {
+						a.BroadcastMessage("goToDestination", hit.point);
+					}
 				}
+				
 			}
 		} else if (Input.GetMouseButtonDown (1)) {
 			RaycastHit hit;
