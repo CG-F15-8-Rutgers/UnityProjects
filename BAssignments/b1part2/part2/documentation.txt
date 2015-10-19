@@ -1,0 +1,4 @@
+Part 2
+UnityChan(the model) is controlled using w,a,s,d
+Space to Jump
+Shift to Run

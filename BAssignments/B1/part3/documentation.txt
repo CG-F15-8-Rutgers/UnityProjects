@@ -1,0 +1,10 @@
+Part 3
+Part 3 combines Part 2 and Part 1
+Using the Environment from Part 1 we imported the asset UnityChan from Part 2
+Right click to (un)select UnityChan or the Obstacles 
+The Obstacles are controlled using w,a,s,d
+UnityChan is controlled by left clicking an area
+When a left click is issued on an area, UnityChan will attempt to walk to that spot
+If a left click is issued on UnityChan, she will start sprinting.
+To stop her from sprinting, left click her again.
+When traversing off mesh links, UnityChan will Jump!
