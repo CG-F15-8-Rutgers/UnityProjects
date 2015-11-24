@@ -85,7 +85,7 @@ public class Director : MonoBehaviour {
 						Debug.Log ("Unselecting obstacle");
 						obstacles.RemoveAt (index);
 					} else {
-						Debug.Log ("Selecting agent");
+						Debug.Log ("Selecting obstacle");
 						obstacles.Add(obstacle);
 					}
 					
