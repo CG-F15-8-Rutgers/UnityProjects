@@ -76,7 +76,11 @@ public class MyBehaviorTree : MonoBehaviour
                 participant3.GetComponent<BehaviorMecanim>().ST_TurnToFace(p1), 
                 new LeafWait(1000),
                 participant1.GetComponent<BehaviorMecanim>().Node_HandAnimation("WAVE", true),
-                participant3.GetComponent<BehaviorMecanim>().Node_HandAnimation("WAVE", true)),
+                participant3.GetComponent<BehaviorMecanim>().Node_HandAnimation("WAVE", true),
+                new LeafWait(1000),
+                participant1.GetComponent<BehaviorMecanim>().Node_HandAnimation("WAVE", false),
+                participant3.GetComponent<BehaviorMecanim>().Node_HandAnimation("WAVE", false),
+                participant2.GetComponent<BehaviorMecanim>().Node_HandAnimation("WAVE", false)),
              new Sequence(participant2.GetComponent<BehaviorMecanim>().ST_TurnToFace(p1),
                 participant1.GetComponent<BehaviorMecanim>().ST_TurnToFace(p2),
                 new LeafWait(1000),
@@ -87,7 +91,11 @@ public class MyBehaviorTree : MonoBehaviour
                 participant3.GetComponent<BehaviorMecanim>().ST_TurnToFace(p2),
                 new LeafWait(1000),
                 participant2.GetComponent<BehaviorMecanim>().Node_HandAnimation("WAVE", true),
-                participant3.GetComponent<BehaviorMecanim>().Node_HandAnimation("WAVE", true)),
+                participant3.GetComponent<BehaviorMecanim>().Node_HandAnimation("WAVE", true),
+                new LeafWait(1000),
+                participant1.GetComponent<BehaviorMecanim>().Node_HandAnimation("WAVE", false),
+                participant3.GetComponent<BehaviorMecanim>().Node_HandAnimation("WAVE", false),
+                participant2.GetComponent<BehaviorMecanim>().Node_HandAnimation("WAVE", false)),
              new Sequence(participant3.GetComponent<BehaviorMecanim>().ST_TurnToFace(p1),
                 participant1.GetComponent<BehaviorMecanim>().ST_TurnToFace(p3),
                 new LeafWait(1000),
@@ -98,7 +106,11 @@ public class MyBehaviorTree : MonoBehaviour
                 participant2.GetComponent<BehaviorMecanim>().ST_TurnToFace(p3),
                 new LeafWait(1000),
                 participant3.GetComponent<BehaviorMecanim>().Node_HandAnimation("WAVE", true),
-                participant2.GetComponent<BehaviorMecanim>().Node_HandAnimation("WAVE", true))
+                participant2.GetComponent<BehaviorMecanim>().Node_HandAnimation("WAVE", true),
+                new LeafWait(1000),
+                participant1.GetComponent<BehaviorMecanim>().Node_HandAnimation("WAVE", false),
+                participant3.GetComponent<BehaviorMecanim>().Node_HandAnimation("WAVE", false),
+                participant2.GetComponent<BehaviorMecanim>().Node_HandAnimation("WAVE", false))
          );
     }
 
