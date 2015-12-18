@@ -5,8 +5,11 @@ public class unitychancontroller : MonoBehaviour {
 	
 	public Animator anim;
 	public Rigidbody rbody;
-	public Transform unitychan;
-	
+	public static Transform unitychan;
+	public Transform Storeenter;
+	public Transform Storeexit;
+	public GameObject Messenger;
+
 	private float inputH;
 	private float inputV;
 	private bool run;
@@ -14,7 +17,8 @@ public class unitychancontroller : MonoBehaviour {
 	private Vector3 curLoc;
 	private Vector3 prevLoc;
 	private Vector3 newpos;
-	
+
+	private bool angry_talk;
 	
 	// Use this for initialization
 	void Start () {
@@ -22,15 +26,15 @@ public class unitychancontroller : MonoBehaviour {
 		rbody = GetComponent<Rigidbody> ();
 		unitychan = GetComponent<Transform> ();
 		run = false;
+		angry_talk = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+	
 
 
-
-
-
+		/*
 		if (Input.GetKeyDown ("1")) {
 			anim.Play("WAIT01",-1,0f);
 		}
@@ -52,14 +56,15 @@ public class unitychancontroller : MonoBehaviour {
 				anim.Play ("DAMAGED01",-1,0f);
 			}
 		}
-		
+		*/
+		/*
 		if (Input.GetKey (KeyCode.Space)) {
 			anim.SetBool ("jump", true);
 		} 
 		else {
 			anim.SetBool ("jump",false);
 		}
-		
+		*/
 		inputV = Input.GetAxis ("Vertical");
 		inputH = Input.GetAxis ("Horizontal");
 		
@@ -86,16 +91,17 @@ public class unitychancontroller : MonoBehaviour {
 		else {
 			run = false;
 		}      
-		
+
+
 		rbody.velocity = transform.forward*moveZ;
+		/*
 		if (moveZ == 0f) {
 			anim.SetBool ("stop", true);
 		}
 		else {
 			anim.SetBool("stop",false);
-		}
+		}*/
 	}
-	void  OnTriggerEnter(Collider other) {
 
-	}
+
 }

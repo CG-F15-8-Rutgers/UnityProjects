@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System;
 using System.Collections;
 using TreeSharpPlus;
@@ -7,26 +8,109 @@ using RootMotion.FinalIK;
 
 public class Harryscript : MonoBehaviour
 {
-
+	public Vector3 unitychanposition;
 	public GameObject Harry;
+	public bool radius;
+	public Text space;
+	public Text talk;
+	private bool talking;
+	public int stage;
 
 	private BehaviorAgent behaviorAgent;
 	// Use this for initialization
 	void Start ()
 	{
+		talking = false;
+		radius = false;
+		/*
 		behaviorAgent = new BehaviorAgent (this.BuildTreeRoot ());
 		BehaviorManager.Instance.Register (behaviorAgent);
-		behaviorAgent.StartBehavior ();
+		behaviorAgent.StartBehavior ();*/
+		stage = 1;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
+		if (Input.GetKeyDown (KeyCode.Space) & stage == 1 & radius == true) {
+			talk.text = "What are you looking at punk!";
+			stage++;
+			StartCoroutine (buffer ());
+		} 
+		if (Input.GetKeyDown (KeyCode.Space) & stage == 2 & radius == true) {
+			talk.text = "Well do something about it! The store sells a fire extinguisher.";
+			stage++;
+			StartCoroutine (buffer ());
+		} 
+		if (Input.GetKeyDown (KeyCode.Space) & stage == 3 & radius == true) {
+			talk.text = "I hear there is some gold hidden in the store";
+			stage++;
+			StartCoroutine (buffer ());
+		} 
+	}
+
+	void unitychanpos( Vector3 unitychan){
+		unitychanposition = unitychancontroller.unitychan.position;
+		Harry.GetComponent<BehaviorMecanim> ().ST_TurnToFace (unitychanposition);
+		Harry.GetComponent<BehaviorMecanim> ().Node_FaceAnimation ("FireBreath", true);
+		talking = true;
+		Debug.Log ("Position Found");
+		Debug.Log (unitychanposition);
+	}
+
+	void OnTriggerEnter(Collider other){
+		if (other.tag == "Unitychan") {
+			radius = true;
+		}
+		
+
+	}
+	void OnTriggerStay(Collider other){
+	
+		
+		if (other.tag == "Unitychan" & stage == 1 & radius == true) {
+			space.text = "Hello, what is going on?";
+			
+		}
+		if (other.tag == "Unitychan" & stage == 2 & radius == true) {
+			space.text = "The Church is on fire!";
+			
+		}
+		if (other.tag == "Unitychan" & stage == 3 & radius == true) {
+			space.text = "I have no money!";
+			
+		}
+
+
+	}
+	void OnTriggerExit(Collider other){
+		
+		if (other.tag == "Unitychan") {
+			space.text = "";
+			radius = false;
+			talk.text = "";
+		}
 		
 	}
+	IEnumerator buffer(){
+		Debug.Log ("timer");
+		yield return new WaitForSeconds (4);
+		radius = true;
+		space.text = "";
+		talk.text = "";
+	}	
+
+
+
+	/*
 	protected Node ST_Firebreath(){
-		return new Sequence (Harry.GetComponent<BehaviorMecanim> ().Node_FaceAnimation ("FireBreath", true));
+			if (talking == true) {
+			return new Sequence (Harry.GetComponent<BehaviorMecanim> ().Node_FaceAnimation ("FireBreath", true));
+			}
+		return new Sequence(Harry.GetComponent<BehaviorMecanim> ().ST_TurnToFace (unitychanposition), new LeafWait(1000));
+
 	}
+*/
 	/*
 	protected Node ST_ApproachAndWait1(Transform target)
 	{
@@ -132,16 +216,17 @@ public class Harryscript : MonoBehaviour
 				this.ST_ApproachAndWait3(this.wander9));
 	}
 	*/
-
+	/*
 	protected Node BuildTreeRoot()
 	{
-		return
-				new DecoratorLoop(
-					new SequenceShuffle(
-						this.ST_Firebreath()
-					)
+
+			return
+				new DecoratorLoop (
+					new SequenceShuffle (
+						this.ST_Firebreath ()
+			)
 				//,
 				//this.ST_ThrowBall()
-				);
-	}
+			);
+	}*/
 }

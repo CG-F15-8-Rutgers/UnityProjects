@@ -2,18 +2,16 @@
 using System.Collections;
 
 public class doorenterscript : MonoBehaviour {
+	public Transform Storeenter;
+	void Update(){
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 
-	void onTriggerEnter(Collider other){
-		other.transform.position = (-136,0,10);
+	void OnTriggerEnter(Collider other){
+
+		other.transform.position = Storeenter.position;
+		Debug.Log ("Entered Store");
+		//other.transform.position = new Vector3(-136,0,10);
 	}
+
 }
